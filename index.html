@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Привет!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace; /* Шрифт терминала */
+      background-color: #000; /* Черный фон */
+      color: #0f0; /* Зелёный текст */
+      overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+    }
+
+    .terminal {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .prompt {
+      color: #ff0; /* Жёлтый текст для приглашения */
+      font-weight: bold;
+    }
+
+    .system-message {
+      color: #0a0; /* Светло-зелёный для системных сообщений */
+    }
+
+    .error {
+      color: #f00; /* Красный для ошибок */
+    }
+
+    .user-message {
+      color: #fff; /* Белый для обычных сообщений */
+    }
+
+    .command {
+      color: #0ff; /* Голубой для команд */
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .command:hover {
+      color: #0ff; /* Подсветка при наведении */
+    }
+
+    .timestamp {
+      color: #666; /* Серый для времени */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .terminal {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет, мир!</h1>
-  <p>Это мой первый сайт на GitHub Pages.</p>
+  <div class="terminal">
+    <!-- Системное сообщение -->
+    <div class="system-message">Welcome to my terminal!</div>
+
+    <!-- Приглашение -->
+    <div class="prompt">></div>
+
+    <!-- Сообщения -->
+    <div class="user-message">Hello, this is your terminal website.</div>
+    <div class="timestamp">[12:01:00]</div>
+    <div class="user-message">You can add commands and messages here.</div>
+    <div class="timestamp">[12:01:05]</div>
+    <div class="error">Error: Command not found.</div>
+    <div class="timestamp">[12:01:10]</div>
+    <div class="system-message">Tip: Try typing a command below.</div>
+
+    <!-- Команды -->
+    <div class="command" onclick="alert('Command executed!')">help</div>
+    <div class="command" onclick="alert('About me page opened.')">about</div>
+    <div class="command" onclick="alert('Contact form opened.')">contact</div>
+
+    <!-- Нижняя строка -->
+    <div class="prompt">></div>
+  </div>
+
+  <script>
+    // Анимация появления текста
+    const terminal = document.querySelector('.terminal');
+    terminal.style.opacity = 0;
+
+    setTimeout(() => {
+      terminal.style.opacity = 1;
+    }, 100);
+  </script>
 </body>
 </html>
