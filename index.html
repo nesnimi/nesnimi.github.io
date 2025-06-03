@@ -2,105 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terminal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linux Terminal Website</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Courier New', monospace; /* Шрифт терминала */
-      background-color: #000; /* Черный фон */
-      color: #0f0; /* Зелёный текст */
-      overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+      font-family: 'Courier New', monospace;
+      background-color: #000;
+      color: #0f0;
     }
 
     .terminal {
-      position: relative;
       width: 100%;
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
       box-sizing: border-box;
-      animation: fadeIn 1s ease-in-out;
+      line-height: 1.2;
+    }
+
+    .path {
+      background-color: #0a0;
+      color: #000;
+      padding: 3px 6px;
+      font-weight: bold;
+      display: inline-block;
+      font-size: 14px;
+      margin-bottom: 5px;
     }
 
     .prompt {
-      color: #ff0; /* Жёлтый текст для приглашения */
+      color: #ff0;
       font-weight: bold;
-    }
-
-    .system-message {
-      color: #0a0; /* Светло-зелёный для системных сообщений */
-    }
-
-    .error {
-      color: #f00; /* Красный для ошибок */
-    }
-
-    .user-message {
-      color: #fff; /* Белый для обычных сообщений */
+      white-space: nowrap;
     }
 
     .command {
-      color: #0ff; /* Голубой для команд */
-      cursor: pointer;
-      transition: color 0.3s;
+      color: #0ff;
     }
 
-    .command:hover {
-      color: #0ff; /* Подсветка при наведении */
+    .output {
+      color: #fff;
     }
 
-    .timestamp {
-      color: #666; /* Серый для времени */
+    .line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    a {
+      color: #0f0;
+      text-decoration: none;
     }
 
-    @media (max-width: 768px) {
-      .terminal {
-        padding: 10px;
-      }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="terminal">
-    <!-- Системное сообщение -->
-    <div class="system-message">Welcome to my terminal!</div>
+    <!-- Путь -->
+    <div class="path">/home/nesnimi</div>
 
-    <!-- Приглашение -->
-    <div class="prompt">></div>
+    <!-- Команда sudo links -->
+    <div class="line">
+      <div class="prompt">[root@localhost ~]#</div>
+      <div class="command">sudo links</div>
+    </div>
+    <div class="output">
+      password: ******<br>
+      <a href="https://t.me/nesnimiplayer"  target="_blank">Telegram</a><br>
+      <a href="https://github.com/nesnimi"  target="_blank">GitHub</a>
+    </div>
 
-    <!-- Сообщения -->
-    <div class="user-message">Hello, this is your terminal website.</div>
-    <div class="timestamp">[12:01:00]</div>
-    <div class="user-message">You can add commands and messages here.</div>
-    <div class="timestamp">[12:01:05]</div>
-    <div class="error">Error: Command not found.</div>
-    <div class="timestamp">[12:01:10]</div>
-    <div class="system-message">Tip: Try typing a command below.</div>
+    <!-- Команда sudo about-me -->
+    <div class="line">
+      <div class="prompt">[root@localhost ~]#</div>
+      <div class="command">sudo about-me</div>
+    </div>
+    <div class="output">
+      Insaf 17 y.o.
+    </div>
 
-    <!-- Команды -->
-    <div class="command" onclick="alert('Command executed!')">help</div>
-    <div class="command" onclick="alert('About me page opened.')">about</div>
-    <div class="command" onclick="alert('Contact form opened.')">contact</div>
-
-    <!-- Нижняя строка -->
-    <div class="prompt">></div>
+    <!-- Конец -->
+    <div class="line">
+      <div class="prompt">[root@localhost ~]#</div>
+    </div>
   </div>
-
-  <script>
-    // Анимация появления текста
-    const terminal = document.querySelector('.terminal');
-    terminal.style.opacity = 0;
-
-    setTimeout(() => {
-      terminal.style.opacity = 1;
-    }, 100);
-  </script>
 </body>
 </html>
